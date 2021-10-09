@@ -6,7 +6,7 @@ public class Field {
     private static final int PADDING = 10;
     private Rectangle boarderWall;
     private Rectangle field;
-    private static final int CELLSIZE = 10;
+    private static final int CELLSIZE = 50;
     private int cols;
     private int rows;
     private int width;
