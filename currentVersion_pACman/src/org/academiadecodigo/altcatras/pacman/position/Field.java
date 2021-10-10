@@ -17,6 +17,7 @@ public class Field {
     private int point;
 
 
+
     public Field(){
 
         width = COLS * CELLSIZE;
@@ -158,18 +159,7 @@ public class Field {
         }
     }
 
-    public void beerCounter(){
-        for (int i = 0; i < ROWS; i++) {
-            for (int j = 0; j < COLS; j++) {
-                if (positions[i][j].getType() == PositionObjectType.PLAYER && positions[i][j].getInteractiveType() == IsInteractiveObjectType.BEER){
-                    positions[i][j].setInteractiveType(IsInteractiveObjectType.EMPTY);
-                    paintBeer(positions,i,j);
-                    point++;
-                    System.out.println(point);
-                }
-            }
-        }
-    }
+
 
     public void paintBeer(Position[][] position, int col, int row){
         position[col][row].setEllipse(new Ellipse(colsToX(col) + CELLSIZE/4, rowsToY(row) + CELLSIZE/4,CELLSIZE/2,CELLSIZE/2));

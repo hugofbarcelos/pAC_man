@@ -33,11 +33,12 @@ public class Game {
         while(true){
             Thread.sleep(200);
             player.move();
-            field.beerCounter();
-            if(MovableObject.checkColisions(player, ghost1)) break;
-            if(MovableObject.checkColisions(player, ghost2)) break;
+            if(player.win()) break;
+            if(player.checkColisions(player, ghost1)) break;
+            if(player.checkColisions(player, ghost2)) break;
             ghost1.move();
             ghost2.move();
+
         }
     }
 
