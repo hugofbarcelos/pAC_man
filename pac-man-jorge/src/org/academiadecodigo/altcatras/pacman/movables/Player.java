@@ -4,24 +4,17 @@ import org.academiadecodigo.altcatras.pacman.position.Field;
 import org.academiadecodigo.altcatras.pacman.position.Position;
 import org.academiadecodigo.altcatras.pacman.position.PositionObjectType;
 
-public class Player implements IsMovable {
+public class Player extends MovableObject implements IsMovable {
 
-    int currentCol;
-    int currentRow;
-    Field field;
-    Direction previousDir;
-    Direction currentDir;
     PlayerKeyboardHandler pkh;
-    Position[][] fieldPositions;
 
     public Player(Field field){
 
-        this.field = field;
-        this.fieldPositions = field.getPositions();
+        super(field);
+
         this.currentCol = 6;
         this.currentRow = 11;
-        this.previousDir = Direction.UP;
-        this.currentDir = Direction.DOWN;
+        this.type = PositionObjectType.PLAYER;
         pkh = new PlayerKeyboardHandler(this);
 
     }
@@ -34,55 +27,28 @@ public class Player implements IsMovable {
         switch (currentDir){
             case DOWN:
 
-                if(fieldPositions[currentCol][currentRow+1].getType() == PositionObjectType.WALL){
-                    return;
-                }
-
-                fieldPositions[currentCol][currentRow].setType(PositionObjectType.EMPTY);
-                field.paintCell(fieldPositions, currentCol, currentRow);
-                currentRow++;
-                fieldPositions[currentCol][currentRow].setType(PositionObjectType.PLAYER);
-                field.paintCell(fieldPositions, currentCol, currentRow);
+                moveDown();
                 break;
 
             case UP:
 
-                if(fieldPositions[currentCol][currentRow-1].getType() == PositionObjectType.WALL) {
-                    return;
-                }
-                fieldPositions[currentCol][currentRow].setType(PositionObjectType.EMPTY);
-                field.paintCell(fieldPositions, currentCol, currentRow);
-                currentRow--;
-                fieldPositions[currentCol][currentRow].setType(PositionObjectType.PLAYER);
-                field.paintCell(fieldPositions, currentCol, currentRow);
+                moveUp();
                 break;
 
             case LEFT:
-                if(fieldPositions[currentCol-1][currentRow].getType() == PositionObjectType.WALL) return;
-                fieldPositions[currentCol][currentRow].setType(PositionObjectType.EMPTY);
-                field.paintCell(fieldPositions, currentCol, currentRow);
-                currentCol--;
-                fieldPositions[currentCol][currentRow].setType(PositionObjectType.PLAYER);
-                field.paintCell(fieldPositions, currentCol, currentRow);
+                moveLeft();
                 break;
 
             case RIGHT:
-                if(fieldPositions[currentCol+1][currentRow].getType() == PositionObjectType.WALL) return;
-                fieldPositions[currentCol][currentRow].setType(PositionObjectType.EMPTY);
-                field.paintCell(fieldPositions, currentCol, currentRow);
-                currentCol++;
-                fieldPositions[currentCol][currentRow].setType(PositionObjectType.PLAYER);
-                field.paintCell(fieldPositions, currentCol, currentRow);
+                moveRight();
                 break;
 
             default: break;
 
         }
 
-    }
+        field.paintCell(fieldPositions, currentCol, currentRow);
 
-    public void placeInGrid(){
-        this.fieldPositions[currentCol][currentRow].setType(PositionObjectType.PLAYER);
     }
 
     public void setCurrentDir(Direction currentDir) {
