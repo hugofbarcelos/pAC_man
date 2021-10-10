@@ -24,34 +24,12 @@ public class Player extends MovableObject implements IsMovable {
 
         //moves on direction set by keyboard
 
-        switch (currentDir){
-            case DOWN:
-
-                moveDown();
-                break;
-
-            case UP:
-
-                moveUp();
-                break;
-
-            case LEFT:
-                moveLeft();
-                break;
-
-            case RIGHT:
-                moveRight();
-                break;
-
-            default: break;
-
-        }
-
-        field.paintCell(fieldPositions, currentCol, currentRow);
+        super.move();
 
     }
 
     public void setCurrentDir(Direction currentDir) {
         this.currentDir = currentDir;
     }
+
 }

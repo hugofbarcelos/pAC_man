@@ -1,15 +1,16 @@
 package org.academiadecodigo.altcatras.pacman;
 
 import org.academiadecodigo.altcatras.pacman.movables.Ghost;
+import org.academiadecodigo.altcatras.pacman.movables.MovableObject;
 import org.academiadecodigo.altcatras.pacman.movables.Player;
 import org.academiadecodigo.altcatras.pacman.position.Field;
-import org.academiadecodigo.altcatras.pacman.position.Position;
 
 public class Game {
 
     Field field;
     Player player;
     Ghost ghost;
+    Boolean isOver = false;
 
     public Game() {
 
@@ -22,13 +23,15 @@ public class Game {
     public void start() throws InterruptedException {
         field.createWalls();
         player.placeInGrid();
+        ghost.placeInGrid();
         field.paintField();
 
 
         while(true){
             Thread.sleep(200);
             player.move();
-            //ghost.move();
+            if(MovableObject.checkColisions(player, ghost)) break;
+            ghost.move();
         }
     }
 
