@@ -10,7 +10,5 @@ public class MainTests {
 
         game.start();
 
-
-
     }
 }
