@@ -23,11 +23,14 @@ public class Game {
         field.createWalls();
         player.placeInGrid();
         field.paintField();
+        field.paintInteractiveObject();
 
 
         while(true){
             Thread.sleep(200);
             player.move();
+            field.beerCounter();
+
             //ghost.move();
         }
     }

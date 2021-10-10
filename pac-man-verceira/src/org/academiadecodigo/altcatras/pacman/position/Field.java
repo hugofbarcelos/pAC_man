@@ -1,6 +1,8 @@
 package org.academiadecodigo.altcatras.pacman.position;
 
+import org.academiadecodigo.altcatras.pacman.movables.Player;
 import org.academiadecodigo.simplegraphics.graphics.Color;
+import org.academiadecodigo.simplegraphics.graphics.Ellipse;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
 public class Field {
@@ -13,6 +15,8 @@ public class Field {
     private int width;
     private int height;
     Position[][] positions;
+    private Player player;
+    private int point;
 
 
     public Field(){
@@ -20,6 +24,7 @@ public class Field {
         width = COLS * CELLSIZE;
         height = ROWS * CELLSIZE;
         this.positions = new Position[COLS][ROWS];
+        this.point = 0;
 
     }
 
@@ -138,10 +143,41 @@ public class Field {
             }
     }
 
+
     public void paintCell(Position[][] position, int col, int row){
         position[col][row].setRectangle(new Rectangle(colsToX(col), rowsToY(row), CELLSIZE, CELLSIZE));
         position[col][row].getRectangle().setColor(position[col][row].getType().color);
         position[col][row].getRectangle().fill();
+    }
+
+    public void paintInteractiveObject(){
+        for(int i = 0; i < ROWS; i++){
+            for(int j = 0; j < COLS; j++){
+                if(positions[i][j].getType() == PositionObjectType.EMPTY){
+                    positions[i][j].setInteractiveType(IsInteractiveObjectType.BEER);
+                    paint(positions,i,j);
+                }
+            }
+        }
+    }
+
+    public void beerCounter(){
+        for (int i = 0; i < ROWS; i++) {
+            for (int j = 0; j < COLS; j++) {
+                if (positions[i][j].getType() == PositionObjectType.PLAYER && positions[i][j].getInteractiveType() == IsInteractiveObjectType.BEER){
+                    positions[i][j].setInteractiveType(IsInteractiveObjectType.EMPTY);
+                    paint(positions,i,j);
+                   point++;
+                   System.out.println(point);
+                }
+            }
+        }
+    }
+
+    public void paint(Position[][] position, int col, int row){
+        position[col][row].setEllipse(new Ellipse(colsToX(col) + CELLSIZE/4, rowsToY(row) + CELLSIZE/4,CELLSIZE/2,CELLSIZE/2));
+        position[col][row].getEllipse().setColor(position[col][row].getInteractiveType().color);
+        position[col][row].getEllipse().fill();
     }
 
     public int getWidth(){
@@ -171,4 +207,5 @@ public class Field {
     public Position[][] getPositions() {
         return positions;
     }
+
 }

@@ -6,6 +6,8 @@ import org.academiadecodigo.altcatras.pacman.position.PositionObjectType;
 
 public class Player extends MovableObject implements IsMovable {
 
+
+
     PlayerKeyboardHandler pkh;
 
     public Player(Field field){
@@ -16,6 +18,7 @@ public class Player extends MovableObject implements IsMovable {
         this.currentRow = 11;
         this.type = PositionObjectType.PLAYER;
         pkh = new PlayerKeyboardHandler(this);
+
 
     }
 
@@ -50,6 +53,8 @@ public class Player extends MovableObject implements IsMovable {
         field.paintCell(fieldPositions, currentCol, currentRow);
 
     }
+
+
 
     public void setCurrentDir(Direction currentDir) {
         this.currentDir = currentDir;
