@@ -7,7 +7,7 @@ import org.academiadecodigo.altcatras.pacman.position.PositionObjectType;
 public class Player extends MovableObject implements IsMovable {
 
     PlayerKeyboardHandler pkh;
-
+    private int points;
     public Player(Field field){
 
         super(field);
@@ -16,6 +16,7 @@ public class Player extends MovableObject implements IsMovable {
         this.currentRow = 11;
         this.type = PositionObjectType.PLAYER;
         pkh = new PlayerKeyboardHandler(this);
+        this.points = 0;
 
     }
 
@@ -32,4 +33,11 @@ public class Player extends MovableObject implements IsMovable {
         this.currentDir = currentDir;
     }
 
+    public void setPoints(int points) {
+        this.points = points;
+    }
+
+    public int getPoints() {
+        return points;
+    }
 }

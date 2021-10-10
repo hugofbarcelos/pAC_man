@@ -1,6 +1,7 @@
 package org.academiadecodigo.altcatras.pacman.position;
 
 import org.academiadecodigo.simplegraphics.graphics.Color;
+import org.academiadecodigo.simplegraphics.graphics.Ellipse;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
 public class Field {
@@ -13,6 +14,7 @@ public class Field {
     private int width;
     private int height;
     Position[][] positions;
+    private int point;
 
 
     public Field(){
@@ -20,6 +22,7 @@ public class Field {
         width = COLS * CELLSIZE;
         height = ROWS * CELLSIZE;
         this.positions = new Position[COLS][ROWS];
+        this.point = 0;
 
     }
 
@@ -144,6 +147,35 @@ public class Field {
         position[col][row].getRectangle().fill();
     }
 
+    public void paintInteractiveObject(){
+        for(int i = 0; i < ROWS; i++){
+            for(int j = 0; j < COLS; j++){
+                if(positions[i][j].getType() == PositionObjectType.EMPTY){
+                    positions[i][j].setInteractiveType(IsInteractiveObjectType.BEER);
+                    paintBeer(positions,i,j);
+                }
+            }
+        }
+    }
+
+    public void beerCounter(){
+        for (int i = 0; i < ROWS; i++) {
+            for (int j = 0; j < COLS; j++) {
+                if (positions[i][j].getType() == PositionObjectType.PLAYER && positions[i][j].getInteractiveType() == IsInteractiveObjectType.BEER){
+                    positions[i][j].setInteractiveType(IsInteractiveObjectType.EMPTY);
+                    paintBeer(positions,i,j);
+                    point++;
+                    System.out.println(point);
+                }
+            }
+        }
+    }
+
+    public void paintBeer(Position[][] position, int col, int row){
+        position[col][row].setEllipse(new Ellipse(colsToX(col) + CELLSIZE/4, rowsToY(row) + CELLSIZE/4,CELLSIZE/2,CELLSIZE/2));
+        position[col][row].getEllipse().setColor(position[col][row].getInteractiveType().color);
+        position[col][row].getEllipse().fill();
+    }
     public int getWidth(){
         return this.width;
     }
