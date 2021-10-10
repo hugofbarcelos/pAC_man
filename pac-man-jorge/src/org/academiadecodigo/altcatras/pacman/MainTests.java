@@ -1,12 +1,16 @@
 package org.academiadecodigo.altcatras.pacman;
 
+import org.academiadecodigo.altcatras.pacman.position.Field;
+
 public class MainTests {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
-        Field field = new Field();
+        Game game = new Game();
 
-        field.createField();
+        game.start();
+
+
 
     }
 }
