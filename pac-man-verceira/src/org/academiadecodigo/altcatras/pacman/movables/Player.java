@@ -4,6 +4,7 @@ import org.academiadecodigo.altcatras.pacman.position.Field;
 import org.academiadecodigo.altcatras.pacman.position.Position;
 import org.academiadecodigo.altcatras.pacman.position.PositionObjectType;
 
+<<<<<<< HEAD
 public class Player implements IsMovable {
 
     int currentCol;
@@ -24,6 +25,24 @@ public class Player implements IsMovable {
         this.currentDir = Direction.DOWN;
         pkh = new PlayerKeyboardHandler(this);
 
+=======
+public class Player extends MovableObject implements IsMovable {
+
+
+
+    PlayerKeyboardHandler pkh;
+
+    public Player(Field field){
+
+        super(field);
+
+        this.currentCol = 6;
+        this.currentRow = 11;
+        this.type = PositionObjectType.PLAYER;
+        pkh = new PlayerKeyboardHandler(this);
+
+
+>>>>>>> 0c0e784d4083c285bcf02e45443ac0d80f65ea8b
     }
 
     @Override
@@ -34,6 +53,7 @@ public class Player implements IsMovable {
         switch (currentDir){
             case DOWN:
 
+<<<<<<< HEAD
                 if(fieldPositions[currentCol][currentRow+1].getType() == PositionObjectType.WALL){
                     return;
                 }
@@ -43,10 +63,14 @@ public class Player implements IsMovable {
                 currentRow++;
                 fieldPositions[currentCol][currentRow].setType(PositionObjectType.PLAYER);
                 field.paintCell(fieldPositions, currentCol, currentRow);
+=======
+                moveDown();
+>>>>>>> 0c0e784d4083c285bcf02e45443ac0d80f65ea8b
                 break;
 
             case UP:
 
+<<<<<<< HEAD
                 if(fieldPositions[currentCol][currentRow-1].getType() == PositionObjectType.WALL) {
                     return;
                 }
@@ -73,18 +97,38 @@ public class Player implements IsMovable {
                 currentCol++;
                 fieldPositions[currentCol][currentRow].setType(PositionObjectType.PLAYER);
                 field.paintCell(fieldPositions, currentCol, currentRow);
+=======
+                moveUp();
+                break;
+
+            case LEFT:
+                moveLeft();
+                break;
+
+            case RIGHT:
+                moveRight();
+>>>>>>> 0c0e784d4083c285bcf02e45443ac0d80f65ea8b
                 break;
 
             default: break;
 
         }
 
+<<<<<<< HEAD
     }
 
     public void placeInGrid(){
         this.fieldPositions[currentCol][currentRow].setType(PositionObjectType.PLAYER);
     }
 
+=======
+        field.paintCell(fieldPositions, currentCol, currentRow);
+
+    }
+
+
+
+>>>>>>> 0c0e784d4083c285bcf02e45443ac0d80f65ea8b
     public void setCurrentDir(Direction currentDir) {
         this.currentDir = currentDir;
     }
