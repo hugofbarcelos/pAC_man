@@ -22,10 +22,9 @@ public class Ghost extends MovableObject implements IsMovable {
     @Override
     public void move() {
 
-        fieldPositions[currentCol][currentRow].setType(PositionObjectType.EMPTY);
-        field.paintCell(fieldPositions, currentCol, currentRow);
-        currentRow++;
-        fieldPositions[currentCol][currentRow].setType(PositionObjectType.GHOST);
+        currentDir = chooseDirectionIntersection(currentDir);
+
+        super.move();
 
 
 
