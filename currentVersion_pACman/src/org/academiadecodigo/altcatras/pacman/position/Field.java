@@ -3,6 +3,7 @@ package org.academiadecodigo.altcatras.pacman.position;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Ellipse;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Field {
 
@@ -14,6 +15,7 @@ public class Field {
     private int width;
     private int height;
     Position[][] positions;
+
 
 
     public Field(){
@@ -158,9 +160,8 @@ public class Field {
     }
 
     public void paintBeer(Position[][] position, int col, int row){
-        position[col][row].setEllipse(new Ellipse(colsToX(col) + CELLSIZE/4, rowsToY(row) + CELLSIZE/4,CELLSIZE/2,CELLSIZE/2));
-        position[col][row].getEllipse().setColor(position[col][row].getInteractiveType().color);
-        position[col][row].getEllipse().fill();
+        position[col][row].setPicture(new Picture(colsToX(col), rowsToY(row),"resources/super-bock.png"));
+        position[col][row].getPicture().draw();
     }
 
     public int getWidth(){

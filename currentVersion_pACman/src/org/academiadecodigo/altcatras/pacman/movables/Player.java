@@ -29,16 +29,12 @@ public class Player extends MovableObject implements IsMovable {
     public void move() {
 
         //moves on direction set by keyboard
-
         super.move();
+        fieldPositions[currentCol][currentRow].getPicture().delete();
+
 
         //if theres a beer in position, deletes it
-        if(fieldPositions[currentCol][currentRow].getEllipse() != null){
-            fieldPositions[currentCol][currentRow].getEllipse().delete();
-        }
-
         beerCounter(currentCol, currentRow);
-
     }
 
     public void setCurrentDir(Direction currentDir) {
@@ -56,7 +52,7 @@ public class Player extends MovableObject implements IsMovable {
     public void beerCounter(int i, int j){
         if (fieldPositions[i][j].getType() == PositionObjectType.PLAYER && fieldPositions[i][j].getInteractiveType() == IsInteractiveObjectType.BEER){
             fieldPositions[i][j].setInteractiveType(IsInteractiveObjectType.EMPTY);
-            field.paintBeer(fieldPositions,i,j);
+            // field.paintBeer(fieldPositions,i,j);
             points++;
         }
     }
