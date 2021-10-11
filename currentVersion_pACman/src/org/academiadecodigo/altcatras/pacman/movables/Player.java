@@ -13,7 +13,10 @@ public class Player extends MovableObject implements IsMovable {
     PlayerKeyboardHandler pkh;
     private int points;
 
-    public Player(Field field){
+
+    private final int MAXPOINTS = 79;
+
+    public Player(Field field) {
 
         super(field);
 
@@ -32,8 +35,9 @@ public class Player extends MovableObject implements IsMovable {
 
         super.move();
 
+
         //if theres a beer in position, deletes it
-        if(fieldPositions[currentCol][currentRow].getEllipse() != null){
+        if (fieldPositions[currentCol][currentRow].getEllipse() != null) {
             fieldPositions[currentCol][currentRow].getEllipse().delete();
         }
 
@@ -53,25 +57,29 @@ public class Player extends MovableObject implements IsMovable {
         return points;
     }
 
-    public void beerCounter(int i, int j){
-        if (fieldPositions[i][j].getType() == PositionObjectType.PLAYER && fieldPositions[i][j].getInteractiveType() == IsInteractiveObjectType.BEER){
+
+    public void beerCounter(int i, int j) {
+        if (fieldPositions[i][j].getType() == PositionObjectType.PLAYER && fieldPositions[i][j].getInteractiveType() == IsInteractiveObjectType.BEER) {
             fieldPositions[i][j].setInteractiveType(IsInteractiveObjectType.EMPTY);
-            field.paintBeer(fieldPositions,i,j);
+            field.paintBeer(fieldPositions, i, j);
             points++;
         }
     }
 
-    public boolean checkWin(){
-        if(points == field.TARGETPOINTS){
-            Rectangle win = new Rectangle(field.getWidth()/2 - 70, field.getHeight()/2 - 50, 200, 100);
+    public boolean checkWin() {
+        if (points == field.TARGETPOINTS) {
+            Rectangle win = new Rectangle(field.getWidth() / 2 - 70, field.getHeight() / 2 - 50, 200, 100);
             win.setColor(Color.GREEN);
             win.fill();
-            Text text = new Text(field. getWidth()/2, field.getHeight()/2 - 10 , "YOU WIN!");
-            text.grow(40,10);
+            Text text = new Text(field.getWidth() / 2, field.getHeight() / 2 - 10, "YOU WIN!");
+            text.grow(40, 10);
             text.setColor(Color.BLACK);
             text.draw();
             return true;
 
         } else return false;
+
     }
 }
+
+

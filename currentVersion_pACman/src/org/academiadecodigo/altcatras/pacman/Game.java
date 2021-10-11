@@ -31,11 +31,13 @@ public class Game {
         while(true){
             Thread.sleep(200);
             player.move();
+
             if(player.checkWin()) break;
             ghost1.move();
             ghost2.move();
             if(player.checkCollisions(player, ghost1)) break;
             if(player.checkCollisions(player, ghost2)) break;
+
         }
     }
 

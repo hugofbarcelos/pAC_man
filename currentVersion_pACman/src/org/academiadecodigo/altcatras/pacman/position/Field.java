@@ -3,6 +3,7 @@ package org.academiadecodigo.altcatras.pacman.position;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Ellipse;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Field {
 
@@ -16,7 +17,7 @@ public class Field {
     Position[][] positions;
 
 
-    public Field(){
+    public Field() {
 
         width = COLS * CELLSIZE;
         height = ROWS * CELLSIZE;
@@ -33,12 +34,12 @@ public class Field {
         paintField();
     }*/
 
-    public void createWalls(){
+    public void createWalls() {
 
         //works for 13 x 13, including walls
         for (int i = 0; i < ROWS; i++) {
 
-            if(i==0 || i == ROWS - 1){
+            if (i == 0 || i == ROWS - 1) {
                 for (int j = 0; j < COLS; j++) {
                     positions[j][i] = new Position();
                     positions[j][i].setType(PositionObjectType.WALL);
@@ -46,14 +47,16 @@ public class Field {
                 continue;
             }
 
-            if(i==1 || i == (ROWS/2) || i == ROWS - 2){
+            if (i == 1 || i == (ROWS / 2) || i == ROWS - 2) {
                 for (int j = 0; j < COLS; j++) {
                     switch (j) {
                         case 0, 12:
                             positions[j][i] = new Position();
                             positions[j][i].setType(PositionObjectType.WALL);
+
                             break;
-                        default: positions[j][i] = new Position();
+                        default:
+                            positions[j][i] = new Position();
                             positions[j][i].setType(PositionObjectType.EMPTY);
                             break;
                     }
@@ -61,7 +64,7 @@ public class Field {
                 continue;
             }
 
-            if(i==2 || i == ROWS - 3) {
+            if (i == 2 || i == ROWS - 3) {
                 for (int j = 0; j < COLS; j++) {
                     switch (j) {
                         case 1, 4, 8, 11:
@@ -77,7 +80,7 @@ public class Field {
                 continue;
             }
 
-            if(i==3 || i == ROWS - 4) {
+            if (i == 3 || i == ROWS - 4) {
                 for (int j = 0; j < COLS; j++) {
                     switch (j) {
                         case 0, 2, 6, 10, 12:
@@ -93,7 +96,7 @@ public class Field {
                 continue;
             }
 
-            if(i==4 || i == ROWS - 5) {
+            if (i == 4 || i == ROWS - 5) {
                 for (int j = 0; j < COLS; j++) {
                     switch (j) {
                         case 0, 4, 6, 8, 12:
@@ -109,7 +112,7 @@ public class Field {
                 continue;
             }
 
-            if(i==5 || i == ROWS - 6) {
+            if (i == 5 || i == ROWS - 6) {
                 for (int j = 0; j < COLS; j++) {
                     switch (j) {
                         case 1, 5, 7, 11:
@@ -126,44 +129,51 @@ public class Field {
             }
 
 
-
         }
 
     }
 
-    public void paintField(){
+    public void paintField() {
         for (int i = 0; i < ROWS; i++) {
             for (int j = 0; j < COLS; j++) {
-                    paintCell(positions, i, j);
-                }
+                paintCell(positions, i, j);
             }
+        }
     }
 
-    public void paintCell(Position[][] position, int col, int row){
+    public void paintCell(Position[][] position, int col, int row) {
 
-        position[col][row].setRectangle(new Rectangle(colsToX(col), rowsToY(row), CELLSIZE, CELLSIZE));
-        position[col][row].getRectangle().setColor(position[col][row].getType().color);
-        position[col][row].getRectangle().fill();
+        if (position[col][row].getType() != PositionObjectType.WALL) {
+            position[col][row].setRectangle(new Rectangle(colsToX(col), rowsToY(row), CELLSIZE, CELLSIZE));
+            position[col][row].getRectangle().setColor(position[col][row].getType().color);
+            position[col][row].getRectangle().fill();
+            return;
+        }
+
+        position[col][row].setPicture(new Picture(colsToX(col), rowsToY(row), "resources/wall.png"));
+        position[col][row].getPicture().draw();
     }
 
-    public void paintInteractiveObject(){
-        for(int i = 0; i < ROWS; i++){
-            for(int j = 0; j < COLS; j++){
-                if(positions[i][j].getType() != PositionObjectType.WALL){
+
+    public void paintInteractiveObject() {
+        for (int i = 0; i < ROWS; i++) {
+            for (int j = 0; j < COLS; j++) {
+                if (positions[i][j].getType() != PositionObjectType.WALL) {
                     positions[i][j].setInteractiveType(IsInteractiveObjectType.BEER);
-                    paintBeer(positions,i,j);
+                    paintBeer(positions, i, j);
                 }
             }
         }
     }
 
-    public void paintBeer(Position[][] position, int col, int row){
-        position[col][row].setEllipse(new Ellipse(colsToX(col) + CELLSIZE/4, rowsToY(row) + CELLSIZE/4,CELLSIZE/2,CELLSIZE/2));
+
+    public void paintBeer(Position[][] position, int col, int row) {
+        position[col][row].setEllipse(new Ellipse(colsToX(col) + CELLSIZE / 4, rowsToY(row) + CELLSIZE / 4, CELLSIZE / 2, CELLSIZE / 2));
         position[col][row].getEllipse().setColor(position[col][row].getInteractiveType().color);
         position[col][row].getEllipse().fill();
     }
 
-    public int getWidth(){
+    public int getWidth() {
         return this.width;
     }
 
@@ -171,11 +181,11 @@ public class Field {
         return this.height;
     }
 
-    public int colsToX(int cols){
+    public int colsToX(int cols) {
         return cols * CELLSIZE + PADDING;
     }
 
-    public int rowsToY (int rows){
+    public int rowsToY(int rows) {
         return rows * CELLSIZE + PADDING;
     }
 

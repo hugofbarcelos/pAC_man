@@ -2,6 +2,7 @@ package org.academiadecodigo.altcatras.pacman.position;
 
 import org.academiadecodigo.simplegraphics.graphics.Ellipse;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Position {
 
@@ -9,6 +10,7 @@ public class Position {
     private Rectangle rectangle;
     private IsInteractiveObjectType interactiveType;
     private Ellipse ellipse;
+    private Picture picture;
 
     public Position(){
         this.type = PositionObjectType.EMPTY;
@@ -49,5 +51,13 @@ public class Position {
 
     public void setEllipse(Ellipse ellipse) {
         this.ellipse = ellipse;
+    }
+
+    public void setPicture(Picture picture){
+        this.picture = picture;
+    }
+
+    public Picture getPicture(){
+        return this.picture;
     }
 }
