@@ -26,7 +26,5 @@ public class Ghost extends MovableObject implements IsMovable {
 
         super.move();
 
-
-
     }
 }

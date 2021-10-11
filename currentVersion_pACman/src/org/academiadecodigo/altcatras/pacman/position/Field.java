@@ -6,15 +6,14 @@ import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
 public class Field {
 
-    private final int PADDING = 10;
-    private Rectangle field;
-    private final int CELLSIZE = 60;
+    public final int PADDING = 10;
+    public final int CELLSIZE = 60;
     private final int COLS = 13; // includes borders
     private final int ROWS = 13;
+    public final int TARGETPOINTS = 81;
     private int width;
     private int height;
     Position[][] positions;
-    private int point;
 
 
     public Field(){
@@ -22,7 +21,6 @@ public class Field {
         width = COLS * CELLSIZE;
         height = ROWS * CELLSIZE;
         this.positions = new Position[COLS][ROWS];
-        this.point = 0;
 
     }
 
@@ -142,6 +140,7 @@ public class Field {
     }
 
     public void paintCell(Position[][] position, int col, int row){
+
         position[col][row].setRectangle(new Rectangle(colsToX(col), rowsToY(row), CELLSIZE, CELLSIZE));
         position[col][row].getRectangle().setColor(position[col][row].getType().color);
         position[col][row].getRectangle().fill();
@@ -150,22 +149,9 @@ public class Field {
     public void paintInteractiveObject(){
         for(int i = 0; i < ROWS; i++){
             for(int j = 0; j < COLS; j++){
-                if(positions[i][j].getType() == PositionObjectType.EMPTY){
+                if(positions[i][j].getType() != PositionObjectType.WALL){
                     positions[i][j].setInteractiveType(IsInteractiveObjectType.BEER);
                     paintBeer(positions,i,j);
-                }
-            }
-        }
-    }
-
-    public void beerCounter(){
-        for (int i = 0; i < ROWS; i++) {
-            for (int j = 0; j < COLS; j++) {
-                if (positions[i][j].getType() == PositionObjectType.PLAYER && positions[i][j].getInteractiveType() == IsInteractiveObjectType.BEER){
-                    positions[i][j].setInteractiveType(IsInteractiveObjectType.EMPTY);
-                    paintBeer(positions,i,j);
-                    point++;
-                    System.out.println(point);
                 }
             }
         }
@@ -176,6 +162,7 @@ public class Field {
         position[col][row].getEllipse().setColor(position[col][row].getInteractiveType().color);
         position[col][row].getEllipse().fill();
     }
+
     public int getWidth(){
         return this.width;
     }

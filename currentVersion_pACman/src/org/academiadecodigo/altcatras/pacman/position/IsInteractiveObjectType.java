@@ -7,7 +7,7 @@ public enum IsInteractiveObjectType {
 
     BEER(Color.YELLOW),
     POWERUP(Color.MAGENTA),
-    EMPTY(Color.RED);
+    EMPTY(Color.WHITE);
 
     Color color;
 
