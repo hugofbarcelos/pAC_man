@@ -28,8 +28,6 @@ public class Player implements IsMovable {
 =======
 public class Player extends MovableObject implements IsMovable {
 
-
-
     PlayerKeyboardHandler pkh;
 
     public Player(Field field){
@@ -41,8 +39,11 @@ public class Player extends MovableObject implements IsMovable {
         this.type = PositionObjectType.PLAYER;
         pkh = new PlayerKeyboardHandler(this);
 
+<<<<<<< HEAD
 
 >>>>>>> 0c0e784d4083c285bcf02e45443ac0d80f65ea8b
+=======
+>>>>>>> 3be4dbf95cfe03403a99a3122cbcee531fd32c91
     }
 
     @Override
@@ -50,6 +51,7 @@ public class Player extends MovableObject implements IsMovable {
 
         //moves on direction set by keyboard
 
+<<<<<<< HEAD
         switch (currentDir){
             case DOWN:
 
@@ -129,7 +131,14 @@ public class Player extends MovableObject implements IsMovable {
 
 
 >>>>>>> 0c0e784d4083c285bcf02e45443ac0d80f65ea8b
+=======
+        super.move();
+
+    }
+
+>>>>>>> 3be4dbf95cfe03403a99a3122cbcee531fd32c91
     public void setCurrentDir(Direction currentDir) {
         this.currentDir = currentDir;
     }
+
 }

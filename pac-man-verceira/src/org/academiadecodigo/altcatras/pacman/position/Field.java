@@ -1,12 +1,16 @@
 package org.academiadecodigo.altcatras.pacman.position;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import org.academiadecodigo.simplegraphics.graphics.Color;
 =======
 import org.academiadecodigo.altcatras.pacman.movables.Player;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Ellipse;
 >>>>>>> 0c0e784d4083c285bcf02e45443ac0d80f65ea8b
+=======
+import org.academiadecodigo.simplegraphics.graphics.Color;
+>>>>>>> 3be4dbf95cfe03403a99a3122cbcee531fd32c91
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
 public class Field {
@@ -20,10 +24,13 @@ public class Field {
     private int height;
     Position[][] positions;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     private Player player;
     private int point;
 >>>>>>> 0c0e784d4083c285bcf02e45443ac0d80f65ea8b
+=======
+>>>>>>> 3be4dbf95cfe03403a99a3122cbcee531fd32c91
 
 
     public Field(){
@@ -32,9 +39,12 @@ public class Field {
         height = ROWS * CELLSIZE;
         this.positions = new Position[COLS][ROWS];
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         this.point = 0;
 >>>>>>> 0c0e784d4083c285bcf02e45443ac0d80f65ea8b
+=======
+>>>>>>> 3be4dbf95cfe03403a99a3122cbcee531fd32c91
 
     }
 
@@ -154,15 +164,19 @@ public class Field {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> 0c0e784d4083c285bcf02e45443ac0d80f65ea8b
+=======
+>>>>>>> 3be4dbf95cfe03403a99a3122cbcee531fd32c91
     public void paintCell(Position[][] position, int col, int row){
         position[col][row].setRectangle(new Rectangle(colsToX(col), rowsToY(row), CELLSIZE, CELLSIZE));
         position[col][row].getRectangle().setColor(position[col][row].getType().color);
         position[col][row].getRectangle().fill();
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
     public void paintInteractiveObject(){
@@ -196,6 +210,8 @@ public class Field {
     }
 
 >>>>>>> 0c0e784d4083c285bcf02e45443ac0d80f65ea8b
+=======
+>>>>>>> 3be4dbf95cfe03403a99a3122cbcee531fd32c91
     public int getWidth(){
         return this.width;
     }
@@ -224,7 +240,10 @@ public class Field {
         return positions;
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> 0c0e784d4083c285bcf02e45443ac0d80f65ea8b
+=======
+>>>>>>> 3be4dbf95cfe03403a99a3122cbcee531fd32c91
 }

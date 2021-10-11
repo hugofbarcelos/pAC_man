@@ -28,11 +28,17 @@ public class Ghost extends MovableObject implements IsMovable {
     public void move() {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         fieldPositions[currentCol][currentRow].setType(PositionObjectType.EMPTY);
         field.paintCell(fieldPositions, currentCol, currentRow);
         currentRow++;
         fieldPositions[currentCol][currentRow].setType(PositionObjectType.GHOST);
+=======
+        currentDir = chooseDirectionIntersection(currentDir);
+
+        super.move();
+>>>>>>> 3be4dbf95cfe03403a99a3122cbcee531fd32c91
 
 
 

@@ -12,12 +12,11 @@ public enum PositionObjectType {
 
     Color color;
 
-    PositionObjectType(){
-
-    }
-
     PositionObjectType(Color color){
         this.color = color;
     }
 
+    public Color getColor() {
+        return color;
+    }
 }
