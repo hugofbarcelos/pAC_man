@@ -3,6 +3,9 @@ package org.academiadecodigo.altcatras.pacman.movables;
 import org.academiadecodigo.altcatras.pacman.position.Field;
 import org.academiadecodigo.altcatras.pacman.position.Position;
 import org.academiadecodigo.altcatras.pacman.position.PositionObjectType;
+import org.academiadecodigo.simplegraphics.graphics.Color;
+import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import org.academiadecodigo.simplegraphics.graphics.Text;
 
 abstract public class MovableObject implements  IsMovable {
 
@@ -230,9 +233,16 @@ abstract public class MovableObject implements  IsMovable {
         }
     }
 
-    public static boolean checkColisions(MovableObject obj1, MovableObject obj2){
+    public boolean checkCollisions(MovableObject obj1, MovableObject obj2){
         if(obj1.currentCol == obj2.currentCol && obj2.currentRow == obj1.currentRow){
             System.out.println("GAME OVER, PLAYER WAS CAUGHT BY THE GHOSTS");
+            Rectangle lose = new Rectangle(field.getWidth()/2 - 70, field.getHeight()/2 - 50, 200, 100);
+            lose.setColor(Color.RED);
+            lose.fill();
+            Text text = new Text(field.getWidth()/2, field.getHeight()/2- 10, "YOU LOSE :( ");
+            text.grow(40,10);
+            text.setColor(Color.BLACK);
+            text.draw();
             return true;
         }
 
