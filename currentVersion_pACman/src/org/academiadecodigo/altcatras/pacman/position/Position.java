@@ -53,20 +53,12 @@ public class Position {
         this.ellipse = ellipse;
     }
 
-<<<<<<< HEAD
+
     public void setPicture(Picture picture){
         this.picture = picture;
     }
 
-    public Picture getPicture(){
-        return this.picture;
-=======
     public Picture getPicture() {
-        return picture;
-    }
-
-    public void setPicture(Picture picture) {
-        this.picture = picture;
->>>>>>> f4473f4ba2ae7af9b9a026de8deb790ae7100705
+        return this.picture;
     }
 }
