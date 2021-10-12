@@ -45,6 +45,7 @@ public abstract class SuperField {
     public void paintField() {
         Picture background = new Picture(colsToX(0), rowsToY(0), "resources/backgroup.png");
         background.draw();
+
         for (int i = 0; i < getROWS(); i++) {
             for (int j = 0; j < getCOLS(); j++) {
                 paintCell(positions, i, j);
@@ -53,12 +54,7 @@ public abstract class SuperField {
     }
 
     public void paintCell(Position[][] position, int col, int row) {
-
-        if (position[col][row].getType() != PositionObjectType.WALL) {
-            position[col][row].setPicture(new Picture(colsToX(col), rowsToY(row), "resources/ground.png"));
-            position[col][row].getPicture().draw();
-            return;
-        } else if (position[col][row].getType() == PositionObjectType.WALL) {
+        if (position[col][row].getType() == PositionObjectType.WALL) {
             position[col][row].setPicture(new Picture(colsToX(col), rowsToY(row), "resources/wall.png"));
             position[col][row].getPicture().draw();
             return;
