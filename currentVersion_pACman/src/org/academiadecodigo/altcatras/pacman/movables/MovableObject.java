@@ -3,6 +3,7 @@ package org.academiadecodigo.altcatras.pacman.movables;
 import org.academiadecodigo.altcatras.pacman.position.Field;
 import org.academiadecodigo.altcatras.pacman.position.Position;
 import org.academiadecodigo.altcatras.pacman.position.PositionObjectType;
+import org.academiadecodigo.altcatras.pacman.position.SuperField;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.graphics.Text;
@@ -12,13 +13,13 @@ abstract public class MovableObject implements IsMovable {
 
     int currentCol;
     int currentRow;
-    Field field;
+    SuperField field;
     Direction currentDir;
     PositionObjectType type;
     Position[][] fieldPositions;
     Picture picture;
 
-    public MovableObject(Field field) {
+    public MovableObject(SuperField field) {
 
         this.field = field;
         this.fieldPositions = field.getPositions();
@@ -62,7 +63,7 @@ abstract public class MovableObject implements IsMovable {
         picture.delete();
         currentCol--;
         fieldPositions[currentCol][currentRow].setType(this.type);
-        picture.translate(-field.CELLSIZE, 0);
+        picture.translate(-SuperField.getCELLSIZE(), 0);
         picture.draw();
 
     }
@@ -74,7 +75,7 @@ abstract public class MovableObject implements IsMovable {
         picture.delete();
         currentCol++;
         fieldPositions[currentCol][currentRow].setType(this.type);
-        picture.translate(field.CELLSIZE, 0);
+        picture.translate(SuperField.getCELLSIZE(), 0);
         picture.draw();
 
     }
@@ -89,7 +90,7 @@ abstract public class MovableObject implements IsMovable {
         picture.delete();
         currentRow++;
         fieldPositions[currentCol][currentRow].setType(this.type);
-        picture.translate(0, field.CELLSIZE);
+        picture.translate(0, SuperField.getCELLSIZE());
         picture.draw();
 
     }
@@ -104,7 +105,7 @@ abstract public class MovableObject implements IsMovable {
         picture.delete();
         currentRow--;
         fieldPositions[currentCol][currentRow].setType(this.type);
-        picture.translate(0, -field.CELLSIZE);
+        picture.translate(0, -SuperField.getCELLSIZE());
         picture.draw();
 
     }

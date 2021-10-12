@@ -7,15 +7,9 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Field extends SuperField {
 
-
-    /*    public void createField() {
-            field = new Rectangle(PADDING, PADDING, getWidth(), getHeight());
-            field.setColor(Color.BLACK);
-
-            field.draw();
-            createWalls();
-            paintField();
-        }*/
+    public Field(){
+        super(81);
+    }
 
     @Override
     public void createWalls() {
@@ -116,31 +110,10 @@ public class Field extends SuperField {
 
     }
 
-
-<<<<<<< HEAD
-=======
+    @Override
     public void paintCell(Position[][] position, int col, int row) {
-        if (position[col][row].getType() != PositionObjectType.WALL) {
-            position[col][row].setPicture(new Picture(colsToX(col), rowsToY(row), "resources/ground.png"));
-            position[col][row].getPicture().draw();
-            return;
-        } else if (position[col][row].getType() == PositionObjectType.WALL) {
-            position[col][row].setPicture(new Picture(colsToX(col), rowsToY(row), "resources/wall.png"));
-            position[col][row].getPicture().draw();
-            return;
-        }
-       /* position[col][row].setRectangle(new Rectangle(colsToX(col), rowsToY(row), CELLSIZE, CELLSIZE));
-        position[col][row].getRectangle().setColor(position[col][row].getType().color);
-        position[col][row].getRectangle().fill();*/
->>>>>>> e145953861150895db6c6be247c45f13f8e168dc
-
-
-
-
-
-
-
-
+        super.paintCell(position, col, row);
+    }
 
 
 }

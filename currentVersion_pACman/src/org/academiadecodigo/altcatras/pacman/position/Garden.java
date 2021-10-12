@@ -1,12 +1,13 @@
 package org.academiadecodigo.altcatras.pacman.position;
 
-import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
-public class Garden extends SuperField{
-
+public class Garden extends SuperField {
 
 
+    public Garden(){
+        super(84);
 
+    }
     public void createWalls() {
 
         //works for 13 x 13, including walls
@@ -87,7 +88,7 @@ public class Garden extends SuperField{
             if (i == 5 || i == getROWS() - 6) {
                 for (int j = 0; j < getCOLS(); j++) {
                     switch (j) {
-                        case 1,2,3,4, 8, 9, 10,11:
+                        case 1, 2, 3, 4, 8, 9, 10, 11:
                             positions[j][i] = new Position();
                             positions[j][i].setType(PositionObjectType.EMPTY);
                             break;
@@ -103,7 +104,7 @@ public class Garden extends SuperField{
             if (i == 6 || i == getROWS() - 7) {
                 for (int j = 0; j < getCOLS(); j++) {
                     switch (j) {
-                        case 0, 2,3,4,5, 6, 7,8,9,10,12:
+                        case 0, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12:
                             positions[j][i] = new Position();
                             positions[j][i].setType(PositionObjectType.WALL);
                             break;
@@ -121,36 +122,9 @@ public class Garden extends SuperField{
 
     }
 
-<<<<<<< HEAD
-=======
-    public void paintField() {
-        for (int i = 0; i < ROWS; i++) {
-            for (int j = 0; j < COLS; j++) {
-                paintCell(positions, i, j);
-            }
-        }
-    }
-
+    @Override
     public void paintCell(Position[][] position, int col, int row) {
-
+        super.paintCell(position, col, row);
     }
-
-    public int getWidth() {
-        return this.width;
-    }
-
-    public int getHeight() {
-        return this.height;
-    }
-
-    public int colsToX(int cols) {
-        return cols * CELLSIZE + PADDING;
-    }
-
-    public int rowsToY(int rows) {
-        return rows * CELLSIZE + PADDING;
-    }
->>>>>>> e145953861150895db6c6be247c45f13f8e168dc
-
 }
 
