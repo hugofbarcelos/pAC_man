@@ -121,6 +121,36 @@ public class Garden extends SuperField{
 
     }
 
+<<<<<<< HEAD
+=======
+    public void paintField() {
+        for (int i = 0; i < ROWS; i++) {
+            for (int j = 0; j < COLS; j++) {
+                paintCell(positions, i, j);
+            }
+        }
+    }
+
+    public void paintCell(Position[][] position, int col, int row) {
+
+    }
+
+    public int getWidth() {
+        return this.width;
+    }
+
+    public int getHeight() {
+        return this.height;
+    }
+
+    public int colsToX(int cols) {
+        return cols * CELLSIZE + PADDING;
+    }
+
+    public int rowsToY(int rows) {
+        return rows * CELLSIZE + PADDING;
+    }
+>>>>>>> e145953861150895db6c6be247c45f13f8e168dc
 
 }
 

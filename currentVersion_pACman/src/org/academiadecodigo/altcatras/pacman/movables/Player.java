@@ -4,6 +4,7 @@ import org.academiadecodigo.altcatras.pacman.position.*;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.graphics.Text;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Player extends MovableObject implements IsMovable {
 
@@ -22,6 +23,8 @@ public class Player extends MovableObject implements IsMovable {
         this.type = PositionObjectType.PLAYER;
         pkh = new PlayerKeyboardHandler(this);
         this.points = 0;
+        this.picture = new Picture(field.colsToX(6), field.rowsToY(11), "resources/gustas.png");
+        this.picture.draw();
 
     }
 

@@ -4,18 +4,28 @@ import org.academiadecodigo.altcatras.pacman.movables.IsMovable;
 import org.academiadecodigo.altcatras.pacman.position.Field;
 import org.academiadecodigo.altcatras.pacman.position.Position;
 import org.academiadecodigo.altcatras.pacman.position.PositionObjectType;
+<<<<<<< HEAD
 import org.academiadecodigo.altcatras.pacman.position.SuperField;
 
 public class Ghost extends MovableObject implements IsMovable {
 
 
     public Ghost(SuperField field){
+=======
+import org.academiadecodigo.simplegraphics.pictures.Picture;
+
+public class Ghost extends MovableObject implements IsMovable {
+
+    public Ghost(Field field){
+>>>>>>> e145953861150895db6c6be247c45f13f8e168dc
 
         super(field);
         this.currentCol = 7;
         this.currentRow = 3;
         this.currentDir = randomDir();
         this.type = PositionObjectType.GHOST;
+        this.picture = new Picture(field.colsToX(7), field.rowsToY(3), "resources/jorge.png");
+        this.picture.draw();
 
     }
 
