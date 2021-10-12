@@ -17,7 +17,7 @@ public class Field {
     Position[][] positions;
 
 
-    public Field(){
+    public Field() {
 
         width = COLS * CELLSIZE;
         height = ROWS * CELLSIZE;
@@ -142,16 +142,20 @@ public class Field {
     }
 
     public void paintCell(Position[][] position, int col, int row) {
-
-        if (position[col][row].getType() != PositionObjectType.WALL) {
-            position[col][row].setRectangle(new Rectangle(colsToX(col), rowsToY(row), CELLSIZE, CELLSIZE));
-            position[col][row].getRectangle().setColor(position[col][row].getType().color);
-            position[col][row].getRectangle().fill();
+        /*if (position[col][row].getType() == PositionObjectType.EMPTY) {
+            position[col][row].setPicture(new Picture(colsToX(col), rowsToY(row), "resources/ground.png"));
+            position[col][row].getPicture().draw();
+            return;
+        } else*/ if (position[col][row].getType() == PositionObjectType.WALL) {
+            position[col][row].setPicture(new Picture(colsToX(col), rowsToY(row), "resources/wall.png"));
+            position[col][row].getPicture().draw();
             return;
         }
+        position[col][row].setRectangle(new Rectangle(colsToX(col), rowsToY(row), CELLSIZE, CELLSIZE));
+        position[col][row].getRectangle().setColor(position[col][row].getType().color);
+        position[col][row].getRectangle().fill();
 
-        position[col][row].setPicture(new Picture(colsToX(col), rowsToY(row), "resources/wall.png"));
-        position[col][row].getPicture().draw();
+
     }
 
 
@@ -167,8 +171,8 @@ public class Field {
     }
 
 
-    public void paintBeer(Position[][] position, int col, int row){
-        position[col][row].setPicture(new Picture(colsToX(col), rowsToY(row),"resources/super-bock.png"));
+    public void paintBeer(Position[][] position, int col, int row) {
+        position[col][row].setPicture(new Picture(colsToX(col), rowsToY(row), "resources/super-bock.png"));
         position[col][row].getPicture().draw();
 
     }

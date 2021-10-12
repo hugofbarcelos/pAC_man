@@ -7,12 +7,8 @@ public class MainTests {
 
     public static void main(String[] args) throws InterruptedException {
 
-        Game game = new Game();
-
-
-
-
-       game.start();
+        Game game = new Game(3);
+        game.start();
 
     }
 }
