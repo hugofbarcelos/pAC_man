@@ -144,9 +144,7 @@ public class Garden {
     }
 
     public void paintCell(Position[][] position, int col, int row) {
-        position[col][row].setRectangle(new Rectangle(colsToX(col), rowsToY(row), CELLSIZE, CELLSIZE));
-        position[col][row].getRectangle().setColor(position[col][row].getType().color);
-        position[col][row].getRectangle().fill();
+
     }
 
     public int getWidth() {

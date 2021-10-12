@@ -5,26 +5,10 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public enum PositionObjectType {
 
-    WALL (Color.BLACK),
-    SPAWNER(Color.PINK),
-    PLAYER(Color.GREEN),
-    GHOST(Color.BLUE),
-    EMPTY(Color.WHITE);
+    WALL,
+    SPAWNER,
+    PLAYER,
+    GHOST,
+    EMPTY;
 
-    Color color;
-    Picture picture;
-
-
-    PositionObjectType(Color color){
-        this.color = color;
-
-    }
-
-    PositionObjectType(Picture picture){
-        this.picture = picture;
-    }
-
-    public Color getColor() {
-        return color;
-    }
 }
