@@ -61,4 +61,8 @@ public class Position {
     public Picture getPicture() {
         return this.picture;
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> c03c023c621342816ebfa2824c88a00368d62395
 }

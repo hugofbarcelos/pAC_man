@@ -4,39 +4,47 @@ import org.academiadecodigo.altcatras.pacman.movables.Ghost;
 import org.academiadecodigo.altcatras.pacman.movables.Player;
 import org.academiadecodigo.altcatras.pacman.position.Field;
 
+import java.util.LinkedList;
+
 public class Game {
 
     Field field;
     Player player;
+    LinkedList<Ghost> ghosts = new LinkedList<>();
     Ghost ghost1, ghost2;
 
-    public Game() {
+
+    public Game(int numberOfGhosts) {
 
         this.field = new Field();
         this.player = new Player(field);
-        this.ghost1 = new Ghost(field);
-        this.ghost2 = new Ghost(field);
+        for (int i = 0; i < numberOfGhosts; i++) {
+            ghosts.add(new Ghost(field));
+        }
 
     }
 
     public void start() throws InterruptedException {
         field.createWalls();
         player.placeInGrid();
-        ghost1.placeInGrid();
-        ghost2.placeInGrid();
+        for (Ghost ghost : ghosts) {
+            ghost.placeInGrid();
+        }
         field.paintField();
         field.paintInteractiveObject();
 
 
-        while(true){
+        while (true) {
             Thread.sleep(200);
             player.move();
 
-            if(player.checkWin()) break;
-            ghost1.move();
-            ghost2.move();
-            if(player.checkCollisions(player, ghost1)) break;
-            if(player.checkCollisions(player, ghost2)) break;
+            if (player.checkWin()) break;
+            for (Ghost ghost : ghosts) {
+                ghost.move();
+                if (player.checkCollisions(player, ghost)) return;
+            }
+
+
 
         }
     }
