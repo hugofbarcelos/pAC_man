@@ -1,9 +1,6 @@
 package org.academiadecodigo.altcatras.pacman.movables;
 
-import org.academiadecodigo.altcatras.pacman.position.Field;
-import org.academiadecodigo.altcatras.pacman.position.IsInteractiveObjectType;
-import org.academiadecodigo.altcatras.pacman.position.Position;
-import org.academiadecodigo.altcatras.pacman.position.PositionObjectType;
+import org.academiadecodigo.altcatras.pacman.position.*;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.graphics.Text;
@@ -16,7 +13,7 @@ public class Player extends MovableObject implements IsMovable {
 
     private final int MAXPOINTS = 79;
 
-    public Player(Field field) {
+    public Player(SuperField field) {
 
         super(field);
 
@@ -60,7 +57,7 @@ public class Player extends MovableObject implements IsMovable {
     }
 
     public boolean checkWin() {
-        if (points == field.TARGETPOINTS) {
+        if (points == field.getTARGETPOINTS()) {
             Rectangle win = new Rectangle(field.getWidth() / 2 - 70, field.getHeight() / 2 - 50, 200, 100);
             win.setColor(Color.GREEN);
             win.fill();

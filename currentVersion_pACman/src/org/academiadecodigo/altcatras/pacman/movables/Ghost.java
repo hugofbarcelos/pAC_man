@@ -4,11 +4,12 @@ import org.academiadecodigo.altcatras.pacman.movables.IsMovable;
 import org.academiadecodigo.altcatras.pacman.position.Field;
 import org.academiadecodigo.altcatras.pacman.position.Position;
 import org.academiadecodigo.altcatras.pacman.position.PositionObjectType;
+import org.academiadecodigo.altcatras.pacman.position.SuperField;
 
 public class Ghost extends MovableObject implements IsMovable {
 
 
-    public Ghost(Field field){
+    public Ghost(SuperField field){
 
         super(field);
         this.currentCol = 7;
