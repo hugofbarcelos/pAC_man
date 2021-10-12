@@ -17,12 +17,7 @@ public class Field {
     Position[][] positions;
 
 
-<<<<<<< HEAD
-    public Field() {
-=======
-
     public Field(){
->>>>>>> f4473f4ba2ae7af9b9a026de8deb790ae7100705
 
         width = COLS * CELLSIZE;
         height = ROWS * CELLSIZE;
@@ -171,17 +166,11 @@ public class Field {
         }
     }
 
-<<<<<<< HEAD
 
-    public void paintBeer(Position[][] position, int col, int row) {
-        position[col][row].setEllipse(new Ellipse(colsToX(col) + CELLSIZE / 4, rowsToY(row) + CELLSIZE / 4, CELLSIZE / 2, CELLSIZE / 2));
-        position[col][row].getEllipse().setColor(position[col][row].getInteractiveType().color);
-        position[col][row].getEllipse().fill();
-=======
     public void paintBeer(Position[][] position, int col, int row){
         position[col][row].setPicture(new Picture(colsToX(col), rowsToY(row),"resources/super-bock.png"));
         position[col][row].getPicture().draw();
->>>>>>> f4473f4ba2ae7af9b9a026de8deb790ae7100705
+
     }
 
     public int getWidth() {
