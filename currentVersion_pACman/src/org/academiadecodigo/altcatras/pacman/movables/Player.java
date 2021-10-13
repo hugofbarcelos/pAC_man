@@ -35,10 +35,7 @@ public class Player extends MovableObject implements IsMovable {
         super.move();
         fieldPositions[currentCol][currentRow].getPicture().delete();
 
-<<<<<<< HEAD
 
-=======
->>>>>>> c03c023c621342816ebfa2824c88a00368d62395
         //if theres a beer in position, deletes it
         beerCounter(currentCol, currentRow);
     }
