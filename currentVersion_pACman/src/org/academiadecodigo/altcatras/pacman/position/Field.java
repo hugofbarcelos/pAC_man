@@ -2,29 +2,8 @@ package org.academiadecodigo.altcatras.pacman.position;
 
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
-<<<<<<< HEAD
-public class Field {
-
-    public final int PADDING = 10;
-    public final int CELLSIZE = 60;
-    private final int COLS = 13; // includes borders
-    private final int ROWS = 13;
-    public final int TARGETPOINTS = 81;
-    private int width;
-    private int height;
-    Position[][] positions;
-
-
-
-    public Field() {
-
-
-        width = COLS * CELLSIZE;
-        height = ROWS * CELLSIZE;
-        this.positions = new Position[COLS][ROWS];
-=======
 public class Field extends SuperField {
->>>>>>> dc0c12b8e689849c423849d46297e3f1a4359136
+
 
     public Field(){
         super(81);
@@ -147,54 +126,4 @@ public class Field extends SuperField {
     }
 
 
-<<<<<<< HEAD
-    public void paintInteractiveObject() {
-        for (int i = 0; i < ROWS; i++) {
-            for (int j = 0; j < COLS; j++) {
-                if (positions[i][j].getType() != PositionObjectType.WALL) {
-                    positions[i][j].setInteractiveType(IsInteractiveObjectType.BEER);
-                    paintBeer(positions, i, j);
-                }
-            }
-        }
-    }
-
-
-
-    public void paintBeer(Position[][] position, int col, int row) {
-        position[col][row].setPicture(new Picture(colsToX(col), rowsToY(row), "resources/super-bock.png"));
-
-        position[col][row].getPicture().draw();
-
-    }
-
-    public int getWidth() {
-        return this.width;
-    }
-
-    public int getHeight() {
-        return this.height;
-    }
-
-    public int colsToX(int cols) {
-        return cols * CELLSIZE + PADDING;
-    }
-
-    public int rowsToY(int rows) {
-        return rows * CELLSIZE + PADDING;
-    }
-
-    public int getCOLS() {
-        return COLS;
-    }
-
-    public int getROWS() {
-        return ROWS;
-    }
-
-    public Position[][] getPositions() {
-        return positions;
-    }
-=======
->>>>>>> dc0c12b8e689849c423849d46297e3f1a4359136
 }

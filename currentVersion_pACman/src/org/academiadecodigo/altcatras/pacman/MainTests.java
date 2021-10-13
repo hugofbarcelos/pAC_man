@@ -14,8 +14,8 @@ public class MainTests {
 
         Game game = new Game(3, garden);
 
-
         game.start();
 
+        System.out.println("end");
     }
 }

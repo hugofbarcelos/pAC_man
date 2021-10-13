@@ -20,9 +20,14 @@ public class Player extends MovableObject implements IsMovable {
         this.type = PositionObjectType.PLAYER;
         this.points = 0;
         this.picture = new Picture(field.colsToX(6), field.rowsToY(11), "resources/gustas.png");
-        this.picture.draw();
+
         pkh = new PlayerKeyboardHandler(this);
 
+
+    }
+
+    public void draw(){
+        this.picture.draw();
     }
 
     @Override
