@@ -1,10 +1,8 @@
 package org.academiadecodigo.altcatras.pacman.position;
 
-import org.academiadecodigo.simplegraphics.graphics.Color;
-import org.academiadecodigo.simplegraphics.graphics.Ellipse;
-import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
+<<<<<<< HEAD
 public class Field {
 
     public final int PADDING = 10;
@@ -24,33 +22,30 @@ public class Field {
         width = COLS * CELLSIZE;
         height = ROWS * CELLSIZE;
         this.positions = new Position[COLS][ROWS];
+=======
+public class Field extends SuperField {
+>>>>>>> dc0c12b8e689849c423849d46297e3f1a4359136
 
+    public Field(){
+        super(81);
     }
 
-/*    public void createField() {
-        field = new Rectangle(PADDING, PADDING, getWidth(), getHeight());
-        field.setColor(Color.BLACK);
-
-        field.draw();
-        createWalls();
-        paintField();
-    }*/
-
+    //Create the walls for the map
+    @Override
     public void createWalls() {
 
         //works for 13 x 13, including walls
-        for (int i = 0; i < ROWS; i++) {
-
-            if (i == 0 || i == ROWS - 1) {
-                for (int j = 0; j < COLS; j++) {
+        for (int i = 0; i < getROWS(); i++) {
+            if (i == 0 || i == getROWS() - 1) {
+                for (int j = 0; j < getROWS(); j++) {
                     positions[j][i] = new Position();
                     positions[j][i].setType(PositionObjectType.WALL);
                 }
                 continue;
             }
 
-            if (i == 1 || i == (ROWS / 2) || i == ROWS - 2) {
-                for (int j = 0; j < COLS; j++) {
+            if (i == 1 || i == (getROWS() / 2) || i == getROWS() - 2) {
+                for (int j = 0; j < getCOLS(); j++) {
                     switch (j) {
                         case 0, 12:
                             positions[j][i] = new Position();
@@ -66,8 +61,8 @@ public class Field {
                 continue;
             }
 
-            if (i == 2 || i == ROWS - 3) {
-                for (int j = 0; j < COLS; j++) {
+            if (i == 2 || i == getROWS() - 3) {
+                for (int j = 0; j < getCOLS(); j++) {
                     switch (j) {
                         case 1, 4, 8, 11:
                             positions[j][i] = new Position();
@@ -82,8 +77,8 @@ public class Field {
                 continue;
             }
 
-            if (i == 3 || i == ROWS - 4) {
-                for (int j = 0; j < COLS; j++) {
+            if (i == 3 || i == getROWS() - 4) {
+                for (int j = 0; j < getROWS(); j++) {
                     switch (j) {
                         case 0, 2, 6, 10, 12:
                             positions[j][i] = new Position();
@@ -98,8 +93,8 @@ public class Field {
                 continue;
             }
 
-            if (i == 4 || i == ROWS - 5) {
-                for (int j = 0; j < COLS; j++) {
+            if (i == 4 || i == getROWS() - 5) {
+                for (int j = 0; j < getCOLS(); j++) {
                     switch (j) {
                         case 0, 4, 6, 8, 12:
                             positions[j][i] = new Position();
@@ -114,8 +109,8 @@ public class Field {
                 continue;
             }
 
-            if (i == 5 || i == ROWS - 6) {
-                for (int j = 0; j < COLS; j++) {
+            if (i == 5 || i == getROWS() - 6) {
+                for (int j = 0; j < getCOLS(); j++) {
                     switch (j) {
                         case 1, 5, 7, 11:
                             positions[j][i] = new Position();
@@ -127,7 +122,6 @@ public class Field {
                             break;
                     }
                 }
-                continue;
             }
 
 
@@ -135,32 +129,25 @@ public class Field {
 
     }
 
+
+    @Override
     public void paintField() {
-        for (int i = 0; i < ROWS; i++) {
-            for (int j = 0; j < COLS; j++) {
-                paintCell(positions, i, j);
-            }
-        }
+        Picture background = new Picture(colsToX(0), rowsToY(0), "resources/backgroup.png"); //defines the background image for this field
+        background.draw();
+        super.paintField();
     }
 
+    @Override
     public void paintCell(Position[][] position, int col, int row) {
-        /*if (position[col][row].getType() == PositionObjectType.EMPTY) {
-            position[col][row].setPicture(new Picture(colsToX(col), rowsToY(row), "resources/ground.png"));
-            position[col][row].getPicture().draw();
-            return;
-        } else*/ if (position[col][row].getType() == PositionObjectType.WALL) {
-            position[col][row].setPicture(new Picture(colsToX(col), rowsToY(row), "resources/wall.png"));
+        if (position[col][row].getType() == PositionObjectType.WALL) {
+            position[col][row].setPicture(new Picture(colsToX(col), rowsToY(row), "resources/wall.png")); //defines the wall image for this field
             position[col][row].getPicture().draw();
             return;
         }
-        position[col][row].setRectangle(new Rectangle(colsToX(col), rowsToY(row), CELLSIZE, CELLSIZE));
-        position[col][row].getRectangle().setColor(position[col][row].getType().color);
-        position[col][row].getRectangle().fill();
-
-
     }
 
 
+<<<<<<< HEAD
     public void paintInteractiveObject() {
         for (int i = 0; i < ROWS; i++) {
             for (int j = 0; j < COLS; j++) {
@@ -208,4 +195,6 @@ public class Field {
     public Position[][] getPositions() {
         return positions;
     }
+=======
+>>>>>>> dc0c12b8e689849c423849d46297e3f1a4359136
 }

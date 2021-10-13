@@ -3,20 +3,23 @@ package org.academiadecodigo.altcatras.pacman.movables;
 import org.academiadecodigo.altcatras.pacman.position.Field;
 import org.academiadecodigo.altcatras.pacman.position.Position;
 import org.academiadecodigo.altcatras.pacman.position.PositionObjectType;
+import org.academiadecodigo.altcatras.pacman.position.SuperField;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.graphics.Text;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 abstract public class MovableObject implements IsMovable {
 
     int currentCol;
     int currentRow;
-    Field field;
+    SuperField field;
     Direction currentDir;
     PositionObjectType type;
     Position[][] fieldPositions;
+    Picture picture;
 
-    public MovableObject(Field field) {
+    public MovableObject(SuperField field) {
 
         this.field = field;
         this.fieldPositions = field.getPositions();
@@ -46,22 +49,25 @@ abstract public class MovableObject implements IsMovable {
                 moveRight();
                 break;
 
+            case NODIRECTION:
+                
+
             default:
                 break;
 
         }
 
-        fieldPositions[currentCol][currentRow].getRectangle().setColor(type.getColor());
-        fieldPositions[currentCol][currentRow].getRectangle().fill();
     }
 
     public void moveLeft() {
 
         if (fieldPositions[currentCol - 1][currentRow].getType() == PositionObjectType.WALL) return;
         fieldPositions[currentCol][currentRow].setType(PositionObjectType.EMPTY);
-        fieldPositions[currentCol][currentRow].getRectangle().delete();
+        picture.delete();
         currentCol--;
         fieldPositions[currentCol][currentRow].setType(this.type);
+        picture.translate(-SuperField.getCELLSIZE(), 0);
+        picture.draw();
 
     }
 
@@ -69,9 +75,11 @@ abstract public class MovableObject implements IsMovable {
 
         if (fieldPositions[currentCol + 1][currentRow].getType() == PositionObjectType.WALL) return;
         fieldPositions[currentCol][currentRow].setType(PositionObjectType.EMPTY);
-        fieldPositions[currentCol][currentRow].getRectangle().delete();
+        picture.delete();
         currentCol++;
         fieldPositions[currentCol][currentRow].setType(this.type);
+        picture.translate(SuperField.getCELLSIZE(), 0);
+        picture.draw();
 
     }
 
@@ -82,9 +90,11 @@ abstract public class MovableObject implements IsMovable {
         }
 
         fieldPositions[currentCol][currentRow].setType(PositionObjectType.EMPTY);
-        fieldPositions[currentCol][currentRow].getRectangle().delete();
+        picture.delete();
         currentRow++;
         fieldPositions[currentCol][currentRow].setType(this.type);
+        picture.translate(0, SuperField.getCELLSIZE());
+        picture.draw();
 
     }
 
@@ -95,9 +105,11 @@ abstract public class MovableObject implements IsMovable {
         }
 
         fieldPositions[currentCol][currentRow].setType(PositionObjectType.EMPTY);
-        fieldPositions[currentCol][currentRow].getRectangle().delete();
+        picture.delete();
         currentRow--;
         fieldPositions[currentCol][currentRow].setType(this.type);
+        picture.translate(0, -SuperField.getCELLSIZE());
+        picture.draw();
 
     }
 
@@ -248,6 +260,10 @@ abstract public class MovableObject implements IsMovable {
         }
         
         return false;
+    }
+
+    public Picture getPicture() {
+        return picture;
     }
 }
 
