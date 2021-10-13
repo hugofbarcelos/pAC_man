@@ -1,6 +1,5 @@
 package org.academiadecodigo.altcatras.pacman.position;
 
-import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public abstract class SuperField {
@@ -22,8 +21,6 @@ public abstract class SuperField {
     public void createWalls() {
 
     }
-
-    ;
 
     public void paintInteractiveObject() {
         for (int i = 0; i < getROWS(); i++) {
@@ -54,14 +51,13 @@ public abstract class SuperField {
 
     public void paintCell(Position[][] position, int col, int row) {
 
-        if (position[col][row].getType() != PositionObjectType.WALL) {
+       /* if (position[col][row].getType() != PositionObjectType.WALL) {
             position[col][row].setPicture(new Picture(colsToX(col), rowsToY(row), "resources/ground.png"));
             position[col][row].getPicture().draw();
             return;
-        } else if (position[col][row].getType() == PositionObjectType.WALL) {
+        } else*/ if (position[col][row].getType() == PositionObjectType.WALL) {
             position[col][row].setPicture(new Picture(colsToX(col), rowsToY(row), "resources/wall.png"));
             position[col][row].getPicture().draw();
-            return;
         }
 
     }
@@ -86,7 +82,7 @@ public abstract class SuperField {
         return height;
     }
 
-    public int getTARGETPOINTS() {
+    public int getTargetPoints() {
         return targetPoints;
     }
 

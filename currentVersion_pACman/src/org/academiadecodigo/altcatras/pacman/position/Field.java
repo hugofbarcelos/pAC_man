@@ -1,10 +1,5 @@
 package org.academiadecodigo.altcatras.pacman.position;
 
-import org.academiadecodigo.simplegraphics.graphics.Color;
-import org.academiadecodigo.simplegraphics.graphics.Ellipse;
-import org.academiadecodigo.simplegraphics.graphics.Rectangle;
-import org.academiadecodigo.simplegraphics.pictures.Picture;
-
 public class Field extends SuperField {
 
     public Field(){
@@ -102,7 +97,6 @@ public class Field extends SuperField {
                             break;
                     }
                 }
-                continue;
             }
 
 

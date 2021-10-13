@@ -2,10 +2,8 @@ package org.academiadecodigo.altcatras.pacman;
 
 import org.academiadecodigo.altcatras.pacman.movables.Ghost;
 import org.academiadecodigo.altcatras.pacman.movables.Player;
-import org.academiadecodigo.altcatras.pacman.position.Field;
 import org.academiadecodigo.altcatras.pacman.position.SuperField;
 
-import java.awt.*;
 import java.util.LinkedList;
 
 public class Game {
@@ -23,18 +21,14 @@ public class Game {
         }
     }
 
-    public void init() {
-        new Rectangle();
-    }
-
     public void start() throws InterruptedException {
         field.createWalls();
+        field.paintField();
+        field.paintInteractiveObject();
         player.placeInGrid();
         for (Ghost ghost : ghosts) {
             ghost.placeInGrid();
         }
-        field.paintField();
-        field.paintInteractiveObject();
 
 
         while (true) {
@@ -43,6 +37,7 @@ public class Game {
 
             if (player.checkWin()) break;
             for (Ghost ghost : ghosts) {
+                if (player.checkCollisions(player, ghost)) return;
                 ghost.move();
                 if (player.checkCollisions(player, ghost)) return;
             }
