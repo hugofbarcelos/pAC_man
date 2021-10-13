@@ -51,7 +51,10 @@ public abstract class SuperField {
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> d7fde5bb915e19d0d830328f2bf043a86a0691d2
        /* if (position[col][row].getType() != PositionObjectType.WALL) {
             position[col][row].setPicture(new Picture(colsToX(col), rowsToY(row), "resources/ground.png"));
             position[col][row].getPicture().draw();
