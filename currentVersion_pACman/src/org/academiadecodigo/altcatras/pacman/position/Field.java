@@ -1,5 +1,7 @@
 package org.academiadecodigo.altcatras.pacman.position;
 
+import org.academiadecodigo.simplegraphics.pictures.Picture;
+
 public class Field extends SuperField {
 
     public Field(){
