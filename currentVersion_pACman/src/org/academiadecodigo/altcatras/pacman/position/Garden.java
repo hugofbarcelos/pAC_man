@@ -1,13 +1,17 @@
 package org.academiadecodigo.altcatras.pacman.position;
 
 
+import org.academiadecodigo.simplegraphics.pictures.Picture;
+
 public class Garden extends SuperField {
 
 
-    public Garden(){
+    public Garden() {
         super(84);
 
     }
+
+    //Create the walls for the map
     public void createWalls() {
 
         //works for 13 x 13, including walls
@@ -122,9 +126,21 @@ public class Garden extends SuperField {
 
     }
 
+
+    @Override
+    public void paintField() {
+        Picture background = new Picture(colsToX(0), rowsToY(0), "resources/backgroup.png"); //defines the background image for this field
+        background.draw();
+        super.paintField();
+    }
+
     @Override
     public void paintCell(Position[][] position, int col, int row) {
-        super.paintCell(position, col, row);
+        if (position[col][row].getType() == PositionObjectType.WALL) {
+            position[col][row].setPicture(new Picture(colsToX(col), rowsToY(row), "resources/wall.png")); //defines the wall image for this field
+            position[col][row].getPicture().draw();
+            return;
+        }
     }
 }
 

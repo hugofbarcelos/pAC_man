@@ -11,6 +11,7 @@ public class Field extends SuperField {
         super(81);
     }
 
+    //Create the walls for the map
     @Override
     public void createWalls() {
 
@@ -110,9 +111,21 @@ public class Field extends SuperField {
 
     }
 
+
+    @Override
+    public void paintField() {
+        Picture background = new Picture(colsToX(0), rowsToY(0), "resources/backgroup.png"); //defines the background image for this field
+        background.draw();
+        super.paintField();
+    }
+
     @Override
     public void paintCell(Position[][] position, int col, int row) {
-        super.paintCell(position, col, row);
+        if (position[col][row].getType() == PositionObjectType.WALL) {
+            position[col][row].setPicture(new Picture(colsToX(col), rowsToY(row), "resources/wall.png")); //defines the wall image for this field
+            position[col][row].getPicture().draw();
+            return;
+        }
     }
 
 
