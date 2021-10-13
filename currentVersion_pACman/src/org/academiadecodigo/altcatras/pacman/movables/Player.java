@@ -11,9 +11,6 @@ public class Player extends MovableObject implements IsMovable {
     PlayerKeyboardHandler pkh;
     private int points;
 
-
-    private final int MAXPOINTS = 79;
-
     public Player(SuperField field) {
 
         super(field);
@@ -21,10 +18,10 @@ public class Player extends MovableObject implements IsMovable {
         this.currentCol = 6;
         this.currentRow = 11;
         this.type = PositionObjectType.PLAYER;
-        pkh = new PlayerKeyboardHandler(this);
         this.points = 0;
         this.picture = new Picture(field.colsToX(6), field.rowsToY(11), "resources/gustas.png");
         this.picture.draw();
+        pkh = new PlayerKeyboardHandler(this);
 
     }
 
@@ -43,15 +40,6 @@ public class Player extends MovableObject implements IsMovable {
         this.currentDir = currentDir;
     }
 
-    public void setPoints(int points) {
-        this.points = points;
-    }
-
-    public int getPoints() {
-        return points;
-    }
-
-
     public void beerCounter(int i, int j) {
         if (fieldPositions[i][j].getType() == PositionObjectType.PLAYER && fieldPositions[i][j].getInteractiveType() == IsInteractiveObjectType.BEER) {
             fieldPositions[i][j].setInteractiveType(IsInteractiveObjectType.EMPTY);
@@ -60,7 +48,7 @@ public class Player extends MovableObject implements IsMovable {
     }
 
     public boolean checkWin() {
-        if (points == field.getTARGETPOINTS()) {
+        if (points == field.getTargetPoints()) {
             Rectangle win = new Rectangle(field.getWidth() / 2 - 70, field.getHeight() / 2 - 50, 200, 100);
             win.setColor(Color.GREEN);
             win.fill();

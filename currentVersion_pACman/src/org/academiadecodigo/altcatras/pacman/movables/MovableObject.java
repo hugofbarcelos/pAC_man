@@ -49,6 +49,9 @@ abstract public class MovableObject implements IsMovable {
                 moveRight();
                 break;
 
+            case NODIRECTION:
+                
+
             default:
                 break;
 
@@ -257,6 +260,10 @@ abstract public class MovableObject implements IsMovable {
         }
         
         return false;
+    }
+
+    public Picture getPicture() {
+        return picture;
     }
 }
 
